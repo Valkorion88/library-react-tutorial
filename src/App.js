@@ -22,7 +22,7 @@ function App() {
         item.id === book.id
           ? {
               ...item,
-              quantity: quantity,
+              quantity: Number(quantity),
             }
           : item
       )
@@ -34,16 +34,12 @@ function App() {
   }
 
   function numberOfItems() {
-    let counter = 0;
-    cart.forEach(item => {
-      counter += item.quantity;
-    });
-    return counter;
+    return cart.reduce((counter, item) => counter + Number(item.quantity), 0);
   }
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  // useEffect(() => {
+  //   console.log(cart);
+  // }, [cart]);
   return (
     <Router>
       <div className="App">
